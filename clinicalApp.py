@@ -36,4 +36,26 @@ database = list()
 while program_running:
     response = show_menu()
     validated, res_number, message = user_option_validation(response)
-    print(validated, res_number, message)
+    
+    if validated == True:
+
+        if res_number == 1:
+            name = input("Ingrese su nombre por favor: ")
+            age = input("Ingrese su edad por favor: ")
+            medical_record = input("Ingrese su motivo de consulta por favor: ")
+            
+            patient = {"name": name, "age": age, "medical_record": medical_record }
+            database.append(patient)
+            
+
+        elif res_number == 2:
+            print("")
+        elif res_number == 3:
+            print("")
+        elif res_number == 4:
+            print("")
+        else:
+            print("")
+
+    else:
+        print("")
