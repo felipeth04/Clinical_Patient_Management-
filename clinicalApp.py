@@ -31,7 +31,9 @@ def user_option_validation(response):
     return validated, res_number, message
 
 program_running = True
-database = list()
+#database = list()
+
+database = [{"name": "juan", "ege": "19", "medical_record": "dolor muela"},{"name": "pedro", "ege": "80", "medical_record": "dolor pie"}]
 
 while program_running:
     response = show_menu()
@@ -51,19 +53,19 @@ while program_running:
         elif res_number == 2:
 
             search_name = input("Ingrese el nombre del paciente por favor: ")
-            name.lower()
+            patient_finded = True
 
             for x in range(len(database)):
-                for key, value in database[x].items():
-                    if key == name and value == search_name:
-                        print(database[x]["name"].upper())
-                        print("Successful patient search | Medical Record:", database[x]["medical_record"])
-                    else:
-                        print("paciente no encontrado")
-
+                if database[x]["name"].lower() == search_name.lower():
+                    print(database[x]["name"].upper())
+                    print("Successful patient search | Medical Record:", database[x]["medical_record"])
+                else:
+                    patient_finded = False
 
         elif res_number == 3:
-            print("")
+            for x in range(len(database)):
+                print("Patient number:", x+1)
+                print(database[x]["name"].upper(),"=> ", database[x]["medical_record"])  
         elif res_number == 4:
             print("")
         else:
