@@ -1,15 +1,21 @@
-print("\n *****************************************************************************")
-print("WELCOME TO CLINIC APP, THE BEST APPLICATION FOR THE MANAGEMENT OF YOUR PATIENTS")
-print("********************************************************************************")
+import os 
+
+os.system('clear')
+print("")
+print("┌─────────────────────────────────────────────────────────────────┐")
+print("│ 🏥 Bienvenidos al sistema de historias clínicas del hospital 🏥 │")
+print("└─────────────────────────────────────────────────────────────────┘")
+print("")
+print("")
 
 def show_menu():
     print("\n ******************************* \n")
-    print("1.   Crear paciente:   ")
-    print("2.   Buscar paciente por nombre: ")
-    print("3.   Listar usuarios: ")
-    print("4.   Salir del programa: \n")
+    print("🛑  1 - Cargar paciente")
+    print("🛑  2 - Buscar paciente")
+    print("🛑  3 - Listar pacientes")
+    print("🛑  4 - Salir\n")
     print("******************************* \n")
-    user_option = input("Selecciona una opción del 1 al 4 por favor: ")
+    user_option = input("DEBES INGRESAR UN NUMERO ENTRE 1 Y 4, INTENTA DE NUEVO POR FAVOR. ")
     return user_option
 
 def user_option_validation(response):
@@ -21,19 +27,17 @@ def user_option_validation(response):
 
         res_number = int(response)
         if(res_number >= 1 and res_number <= 4):
-            message = "Esta en rango"
+            message = "ESTA EN RANGO "
             validated = True
         else:
-            message = "fuera de rango"
+            message = "FUERA DE RANGO "
     else:
-        message = "Entrada incorrecta"
+        message = "ENTRADA INCORRECTA "
     
     return validated, res_number, message
 
 program_running = True
-#database = list()
-
-database = [{"name": "juan", "ege": "19", "medical_record": "dolor muela"},{"name": "pedro", "ege": "80", "medical_record": "dolor pie"}]
+database = list()
 
 while program_running:
     response = show_menu()
@@ -42,34 +46,43 @@ while program_running:
     if validated == True:
 
         if res_number == 1:
-            name = input("Ingrese su nombre por favor: ")
-            age = input("Ingrese su edad por favor: ")
-            medical_record = input("Ingrese su motivo de consulta por favor: ")
+            name = input("INGRESA EL NOMBRE DEL PACIENTE: ")
+            age = input("INGRESE LA EDAD DEL PACIENTE: ")
+            medical_record = input("INGRESE EL MOTIVO DE CONSULTA: ")
             
             patient = {"name": name, "age": age, "medical_record": medical_record }
             database.append(patient)
             
-
         elif res_number == 2:
 
-            search_name = input("Ingrese el nombre del paciente por favor: ")
+            search_name = input("\nINGRESE EL NOMBRE DEL PACIENTE A CONSULTAR: ")
             patient_finded = True
 
             for x in range(len(database)):
                 if database[x]["name"].lower() == search_name.lower():
-                    print(database[x]["name"].upper())
-                    print("Successful patient search | Medical Record:", database[x]["medical_record"])
+                    print("\n┌──────────────────────────────────────┐")
+                    print("│   BUSQUEDA EXITOSA DEL PACIENTE      │")
+                    print("└──────────────────────────────────────┘\n")
+                    print("NOMBRE COMPLETO DEL PACIENTE: ",database[x]["name"].upper())
+                    print("EDAD ACTUAL DEL PACIENTE: ", database[x]["age"])
+                    print("HISTORIAL CLINICA COMPLETA: ", database[x]["medical_record"])
                 else:
                     patient_finded = False
 
         elif res_number == 3:
+            print("\n┌─────────────────────────────┐")
+            print("│   LISTADO DE PACIENTES      │")
+            print("└─────────────────────────────┘\n")
             for x in range(len(database)):
-                print("Patient number:", x+1)
-                print(database[x]["name"].upper(),"=> ", database[x]["medical_record"])  
+                print("\n┌─────────────────────────────────────────────────────────────┐")
+                print("| NUMERO DE PACIENTE:", "| NOMBRE", "| ULTIMA HISTORIA CLINICA")
+                print()
+                print("\t",x+1,"\t\t",database[x]["name"].upper(),"\t\t", database[x]["medical_record"])
+                print("└─────────────────────────────────────────────────────────────┘\n")
         elif res_number == 4:
             program_running = False
         else:
-            print("Vuelve a intentar por favor: ")
+            print(message)
 
     else:
         print("")
