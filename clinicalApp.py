@@ -67,9 +67,9 @@ while program_running:
                 print("Patient number:", x+1)
                 print(database[x]["name"].upper(),"=> ", database[x]["medical_record"])  
         elif res_number == 4:
-            print("")
+            program_running = False
         else:
-            print("")
+            print("Vuelve a intentar por favor: ")
 
     else:
         print("")
