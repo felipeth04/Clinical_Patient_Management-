@@ -49,7 +49,19 @@ while program_running:
             
 
         elif res_number == 2:
-            print("")
+
+            search_name = input("Ingrese el nombre del paciente por favor: ")
+            name.lower()
+
+            for x in range(len(database)):
+                for key, value in database[x].items():
+                    if key == name and value == search_name:
+                        print(database[x]["name"].upper())
+                        print("Successful patient search | Medical Record:", database[x]["medical_record"])
+                    else:
+                        print("paciente no encontrado")
+
+
         elif res_number == 3:
             print("")
         elif res_number == 4:
